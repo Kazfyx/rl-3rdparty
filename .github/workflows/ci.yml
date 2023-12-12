@@ -16,7 +16,7 @@ jobs:
           path: ${{ runner.workspace }}/Qt
           key: ${{ runner.os }}-${{ env.CMAKE_GENERATOR_TOOLSET }}-${{ env.CMAKE_GENERATOR_PLATFORM }}-qtbase-qtsvg
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           arch: win64_msvc2019_64
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
@@ -63,18 +63,18 @@ jobs:
         working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cpack -G WIX
       - name: Upload archive
-        uses: svenstaro/upload-release-action@2.7.0
+        uses: svenstaro/upload-release-action@v2
         with:
-          file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.7z
+          file: rl-3rdparty-build/rl-3rdparty-*.7z
           file_glob: true
           overwrite: true
           prerelease: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
       - name: Upload installer
-        uses: svenstaro/upload-release-action@2.7.0
+        uses: svenstaro/upload-release-action@v2
         with:
-          file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.msi
+          file: rl-3rdparty-build/rl-3rdparty-*.msi
           file_glob: true
           overwrite: true
           prerelease: true

@@ -5,11 +5,11 @@ project(3rdparty)
 include(ExternalProject)
 include(GNUInstallDirs)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 list(INSERT CMAKE_PREFIX_PATH 0 ${CMAKE_INSTALL_PREFIX})
 
-add_subdirectory(atidaq)
+#add_subdirectory(atidaq)
 add_subdirectory(boost)
 add_subdirectory(bullet3)
 add_subdirectory(coin)
@@ -35,7 +35,7 @@ add_subdirectory(libxslt)
 if(NOT DEFINED CPACK_INSTALL_CMAKE_PROJECTS)
 	set(
 		CPACK_INSTALL_CMAKE_PROJECTS
-		${CMAKE_CURRENT_BINARY_DIR}/atidaq/atidaq-prefix/src/atidaq-build atidaq ALL /
+#		${CMAKE_CURRENT_BINARY_DIR}/atidaq/atidaq-prefix/src/atidaq-build atidaq ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/bullet3/bullet3-prefix/src/bullet3-build bullet3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/coin/coin-prefix/src/coin-build coin ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/eigen3/eigen3-prefix/src/eigen3-build eigen3 ALL /

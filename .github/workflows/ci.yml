@@ -62,8 +62,7 @@ jobs:
       - name: Create installer
         working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cpack -G WIX
-      - if: ${{ github.event_name == 'push' }}
-        name: Upload archive
+      - name: Upload archive
         uses: svenstaro/upload-release-action@v2
         with:
           file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.7z
@@ -72,8 +71,7 @@ jobs:
           prerelease: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
-      - if: ${{ github.event_name == 'push' }}
-        name: Upload installer
+      - name: Upload installer
         uses: svenstaro/upload-release-action@v2
         with:
           file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.msi

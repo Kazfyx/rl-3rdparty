@@ -63,7 +63,7 @@ jobs:
         working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cpack -G WIX
       - name: Upload archive
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@2.7.0
         with:
           file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.7z
           file_glob: true
@@ -72,7 +72,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
       - name: Upload installer
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@2.7.0
         with:
           file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.msi
           file_glob: true

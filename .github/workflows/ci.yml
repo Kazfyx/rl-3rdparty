@@ -13,18 +13,18 @@ jobs:
         id: cache-qt
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/Qt
+          path: ${{ runner.workspace }}/Qt
           key: ${{ runner.os }}-${{ env.CMAKE_GENERATOR_TOOLSET }}-${{ env.CMAKE_GENERATOR_PLATFORM }}-qtbase-qtsvg
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v2
         with:
           arch: win64_msvc2019_64
-          cache: ${{ steps.cache-qt.outputs.cache-hit }}
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
           extra: --external 7z --archives qtbase qtsvg
           version: 5.15.2
       - if: ${{ steps.cache-qt.outputs.cache-hit != 'true' }}
         name: Install Qt licenses
-        working-directory: ${{ github.workspace }}
+        working-directory: ${{ runner.workspace }}
         run: |
           curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.gplv3except/1.0.0-1meta.7z -o qt.license.gplv3except.7z
           7z e qt.license.gplv3except.7z -o"$Env:Qt5_DIR\share\licenses\qt" qt.license.gplv3except\*
@@ -39,30 +39,30 @@ jobs:
       - name: Update environment variables
         run: |
           Write-Output "CMAKE_PREFIX_PATH=$Env:Qt5_DIR" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
-          Write-Output "${{ github.workspace }}\rl-3rdparty-install\bin" | Out-File -FilePath $Env:GITHUB_PATH -Encoding utf8 -Append
+          Write-Output "${{ runner.workspace }}\rl-3rdparty-install\bin" | Out-File -FilePath $Env:GITHUB_PATH -Encoding utf8 -Append
       - name: Configure CMake
         run: >
           cmake
           -G"Ninja Multi-Config"
           -DCPACK_INSTALL_CMAKE_PROJECTS=""
-          -DCMAKE_INSTALL_PREFIX="${{ github.workspace }}/rl-3rdparty-install"
+          -DCMAKE_INSTALL_PREFIX="${{ runner.workspace }}/rl-3rdparty-install"
           -DCPACK_INSTALLED_DIRECTORIES="$Env:Qt5_DIR;.;$($Env:RUNNER_WORKSPACE.Replace('\', '/'))/rl-3rdparty-install;."
           -DCPACK_MONOLITHIC_INSTALL=ON
           -S"${{ github.workspace }}"
-          -B"${{ github.workspace }}/rl-3rdparty-build"
+          -B"${{ runner.workspace }}/rl-3rdparty-build"
       - name: Build Debug
-        working-directory: ${{ github.workspace }}/rl-3rdparty-build
+        working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cmake --build . --config Debug
       - name: Build Release
-        working-directory: ${{ github.workspace }}/rl-3rdparty-build
+        working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cmake --build . --config Release
       - name: Create archive
-        working-directory: ${{ github.workspace }}/rl-3rdparty-build
+        working-directory: ${{ runner.workspace }}/rl-3rdparty-build
         run: cpack -G 7Z
       - name: Upload archive
         uses: svenstaro/upload-release-action@v2
         with:
-          file: ${{ github.workspace }}/rl-3rdparty-build/rl-3rdparty-*.7z
+          file: ${{ runner.workspace }}/rl-3rdparty-build/rl-3rdparty-*.7z
           file_glob: true
           overwrite: true
           prerelease: true

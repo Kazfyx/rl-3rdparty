@@ -2,10 +2,10 @@ ExternalProject_Add(
 	soqt
 	DEPENDS coin
 	#GIT_REPOSITORY https://github.com/coin3d/soqt.git
-	#GIT_TAG SoQt-1.6.0
-	URL https://github.com/coin3d/soqt/releases/download/SoQt-1.6.0/soqt-1.6.0-src.tar.gz
-	#URL ${CMAKE_CURRENT_SOURCE_DIR}/soqt-SoQt-1.6.0.zip
-	URL_MD5 724996aedad2a33760dc36f08ceeda22
+	#GIT_TAG SoQt-1.6.1
+	URL https://github.com/coin3d/soqt/releases/download/v1.6.1/soqt-1.6.1-src.tar.gz
+	#URL ${CMAKE_CURRENT_SOURCE_DIR}/soqt-SoQt-1.6.1.zip
+	URL_MD5 0aee99870e9e146b2bb8d7e5fced13ac
 	CMAKE_ARGS
 		-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 		-DCMAKE_CFG_INTDIR=${CMAKE_CFG_INTDIR}

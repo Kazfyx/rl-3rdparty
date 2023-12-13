@@ -1,10 +1,8 @@
 ExternalProject_Add(
 	boost
-	URL
-		https://sourceforge.net/projects/boost/files/boost/1.80.0/boost_1_80_0.7z/download
-		https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.7z
-	#URL ${CMAKE_CURRENT_SOURCE_DIR}/boost_1_80_0.7z
-	URL_MD5 50034b565a679d8d971a72f1dec1b0e2
+	URL https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.7z
+	#URL ${CMAKE_CURRENT_SOURCE_DIR}/boost_1_83_0.7z
+	URL_MD5 3200e75aaad7167d549433d7985d1c00
 	CONFIGURE_COMMAND ""
 	BUILD_COMMAND ""
 	BUILD_IN_SOURCE 1

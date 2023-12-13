@@ -35,23 +35,23 @@ add_subdirectory(libxslt)
 if(NOT DEFINED CPACK_INSTALL_CMAKE_PROJECTS)
 	set(
 		CPACK_INSTALL_CMAKE_PROJECTS
-#		${CMAKE_CURRENT_BINARY_DIR}/atidaq/atidaq-prefix/src/atidaq-build atidaq ALL /
+		#${CMAKE_CURRENT_BINARY_DIR}/atidaq/atidaq-prefix/src/atidaq-build atidaq ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/bullet3/bullet3-prefix/src/bullet3-build bullet3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/coin/coin-prefix/src/coin-build coin ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/eigen3/eigen3-prefix/src/eigen3-build eigen3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/fcl/fcl-prefix/src/fcl-build fcl ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libccd/libccd-prefix/src/libccd-build libccd ALL /
-		${CMAKE_CURRENT_BINARY_DIR}/libiconv/libiconv-prefix/src/libiconv-build libiconv ALL /
+		#${CMAKE_CURRENT_BINARY_DIR}/libiconv/libiconv-prefix/src/libiconv-build libiconv ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libxml2/libxml2-prefix/src/libxml2-build libxml2 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libxslt/libxslt-prefix/src/libxslt-build libxslt ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/nlopt/nlopt-prefix/src/nlopt-build nlopt ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/ode/ode-prefix/src/ode-build ode ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/pqp/pqp-prefix/src/pqp-build pqp ALL /
-		${CMAKE_CURRENT_BINARY_DIR}/simage/simage-prefix/src/simage-build simage ALL /
+		#${CMAKE_CURRENT_BINARY_DIR}/simage/simage-prefix/src/simage-build simage ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/solid3/solid3-prefix/src/solid3-build solid3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/soqt/soqt-prefix/src/soqt-build soqt ALL /
-		${CMAKE_CURRENT_BINARY_DIR}/xz/xz-prefix/src/xz-build xz ALL /
-		${CMAKE_CURRENT_BINARY_DIR}/zlib/zlib-prefix/src/zlib-build zlib ALL /
+		#${CMAKE_CURRENT_BINARY_DIR}/xz/xz-prefix/src/xz-build xz ALL /
+		#${CMAKE_CURRENT_BINARY_DIR}/zlib/zlib-prefix/src/zlib-build zlib ALL /
 	)
 endif()
 

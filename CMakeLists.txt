@@ -14,14 +14,14 @@ add_subdirectory(boost)
 add_subdirectory(bullet3)
 add_subdirectory(coin)
 add_subdirectory(eigen3)
-#add_subdirectory(gperf)
+add_subdirectory(gperf)
 add_subdirectory(libccd)
 add_subdirectory(nlopt)
 add_subdirectory(ode)
 add_subdirectory(pqp)
 #add_subdirectory(simage)
 add_subdirectory(solid3)
-#add_subdirectory(xz)
+add_subdirectory(xz)
 #add_subdirectory(zlib)
 
 add_subdirectory(fcl)
@@ -50,7 +50,7 @@ if(NOT DEFINED CPACK_INSTALL_CMAKE_PROJECTS)
 		#${CMAKE_CURRENT_BINARY_DIR}/simage/simage-prefix/src/simage-build simage ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/solid3/solid3-prefix/src/solid3-build solid3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/soqt/soqt-prefix/src/soqt-build soqt ALL /
-		#${CMAKE_CURRENT_BINARY_DIR}/xz/xz-prefix/src/xz-build xz ALL /
+		${CMAKE_CURRENT_BINARY_DIR}/xz/xz-prefix/src/xz-build xz ALL /
 		#${CMAKE_CURRENT_BINARY_DIR}/zlib/zlib-prefix/src/zlib-build zlib ALL /
 	)
 endif()

@@ -25,7 +25,7 @@ add_subdirectory(solid3)
 #add_subdirectory(zlib)
 
 add_subdirectory(fcl)
-#add_subdirectory(libiconv)
+add_subdirectory(libiconv)
 add_subdirectory(soqt)
 
 add_subdirectory(libxml2)
@@ -41,7 +41,7 @@ if(NOT DEFINED CPACK_INSTALL_CMAKE_PROJECTS)
 		${CMAKE_CURRENT_BINARY_DIR}/eigen3/eigen3-prefix/src/eigen3-build eigen3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/fcl/fcl-prefix/src/fcl-build fcl ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libccd/libccd-prefix/src/libccd-build libccd ALL /
-		#${CMAKE_CURRENT_BINARY_DIR}/libiconv/libiconv-prefix/src/libiconv-build libiconv ALL /
+		${CMAKE_CURRENT_BINARY_DIR}/libiconv/libiconv-prefix/src/libiconv-build libiconv ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libxml2/libxml2-prefix/src/libxml2-build libxml2 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/libxslt/libxslt-prefix/src/libxslt-build libxslt ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/nlopt/nlopt-prefix/src/nlopt-build nlopt ALL /

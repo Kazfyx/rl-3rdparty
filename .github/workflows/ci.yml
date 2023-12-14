@@ -9,36 +9,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Enable Developer Command Prompt
         uses: ilammy/msvc-dev-cmd@v1
-      - name: Cache Qt
-        id: cache-qt
-        uses: actions/cache@v3
-        with:
-          path: ${{ runner.workspace }}/Qt
-          key: ${{ runner.os }}-${{ env.CMAKE_GENERATOR_TOOLSET }}-${{ env.CMAKE_GENERATOR_PLATFORM }}-qtbase-qtsvg
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
-          arch: win64_msvc2019_64
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          extra: --external 7z --archives qtbase qtsvg
-          version: 5.15.2
-      - if: ${{ steps.cache-qt.outputs.cache-hit != 'true' }}
-        name: Install Qt licenses
-        working-directory: ${{ runner.workspace }}
-        run: |
-          curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.gplv3except/1.0.0-1meta.7z -o qt.license.gplv3except.7z
-          7z e qt.license.gplv3except.7z -o"$Env:Qt5_DIR\share\licenses\qt" qt.license.gplv3except\*
-          curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.lgpl/1.0.2meta.7z -o qt.license.lgpl.7z
-          7z e qt.license.lgpl.7z -o"$Env:Qt5_DIR\share\licenses\qt" qt.license.lgpl\*
-          curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.python/2meta.7z -o qt.license.python.7z
-          7z e qt.license.python.7z -o"$Env:Qt5_DIR\share\licenses\qt" qt.license.python\*
-          curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.thirdparty/1.0.0ThirdPartySoftware_Listing.7z -o qt.license.thirdparty.7z
-          7z e qt.license.thirdparty.7z -o"$Env:Qt5_DIR\share\licenses\qt" Licenses\*
-          curl.exe -L https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/licenses/qt.license.win10sdk/1.0.0meta.7z -o qt.license.win10sdk.7z
-          7z e qt.license.win10sdk.7z -o"$Env:Qt5_DIR\share\licenses\qt" qt.license.win10sdk\*
+          version: '5.15.2'
+          arch: 'win64_msvc2019_64'
+          archives: 'qtbase qtsvg'
+          extra: '--external 7z'
       - name: Update environment variables
         run: |
-          Write-Output "CMAKE_PREFIX_PATH=$Env:Qt5_DIR" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
           Write-Output "${{ runner.workspace }}\rl-3rdparty-install\bin" | Out-File -FilePath $Env:GITHUB_PATH -Encoding utf8 -Append
       - name: Configure CMake
         run: >

@@ -46,7 +46,7 @@ jobs:
           -G"Ninja Multi-Config"
           -DCPACK_INSTALL_CMAKE_PROJECTS=""
           -DCMAKE_INSTALL_PREFIX="${{ runner.workspace }}/rl-3rdparty-install"
-          -DCPACK_INSTALLED_DIRECTORIES="$Env:Qt5_DIR;.;$($Env:RUNNER_WORKSPACE.Replace('\', '/'))/rl-3rdparty-install;."
+          -DCPACK_INSTALLED_DIRECTORIES="$($Env:RUNNER_WORKSPACE.Replace('\', '/'))/rl-3rdparty-install;."
           -DCPACK_MONOLITHIC_INSTALL=ON
           -S"${{ github.workspace }}"
           -B"${{ github.workspace }}/build"

@@ -19,7 +19,7 @@ add_subdirectory(libccd)
 add_subdirectory(nlopt)
 add_subdirectory(ode)
 add_subdirectory(pqp)
-#add_subdirectory(simage)
+add_subdirectory(simage)
 add_subdirectory(solid3)
 add_subdirectory(xz)
 add_subdirectory(zlib)
@@ -47,7 +47,7 @@ if(NOT DEFINED CPACK_INSTALL_CMAKE_PROJECTS)
 		${CMAKE_CURRENT_BINARY_DIR}/nlopt/nlopt-prefix/src/nlopt-build nlopt ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/ode/ode-prefix/src/ode-build ode ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/pqp/pqp-prefix/src/pqp-build pqp ALL /
-		#${CMAKE_CURRENT_BINARY_DIR}/simage/simage-prefix/src/simage-build simage ALL /
+		${CMAKE_CURRENT_BINARY_DIR}/simage/simage-prefix/src/simage-build simage ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/solid3/solid3-prefix/src/solid3-build solid3 ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/soqt/soqt-prefix/src/soqt-build soqt ALL /
 		${CMAKE_CURRENT_BINARY_DIR}/xz/xz-prefix/src/xz-build xz ALL /

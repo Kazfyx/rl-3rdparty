@@ -6,16 +6,16 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Enable Developer Command Prompt
         uses: ilammy/msvc-dev-cmd@v1
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: '5.15.2'
-          arch: 'win64_msvc2019_64'
-          archives: 'qtbase qtsvg'
-          extra: '--external 7z'
+          version: 6.3.2
+          arch: win64_msvc2019_64
+          archives: qtbase qtsvg
+          extra: --external 7z
       - name: Update environment variables
         run: |
           Write-Output "${{ runner.workspace }}\rl-3rdparty-install\bin" | Out-File -FilePath $Env:GITHUB_PATH -Encoding utf8 -Append
@@ -25,7 +25,7 @@ jobs:
           -G"Ninja Multi-Config"
           -DCPACK_INSTALL_CMAKE_PROJECTS=""
           -DCMAKE_INSTALL_PREFIX="${{ runner.workspace }}/rl-3rdparty-install"
-          -DCPACK_INSTALLED_DIRECTORIES="$($Env:RUNNER_WORKSPACE.Replace('\', '/'))/rl-3rdparty-install;."
+          -DCPACK_INSTALLED_DIRECTORIES="${{ runner.workspace }}/rl-3rdparty-install;."
           -DCPACK_MONOLITHIC_INSTALL=ON
           -S"${{ github.workspace }}"
           -B"${{ github.workspace }}/build"
